@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		  <title>Seaworld Attraction MidTerm</title>
+		</head>
+		
+		<body>
+			<script type="text/javascript">
+			
+				// FileName:Watford_Midterm.html
+				// Programer: Katelyn Watford
+				// Purpose: ACME Cement Company wants to lay concrete for the new Seaworld Attraction
+				
+					
+				//Global Var:
+				
+				//CONSTANTS
+					//the company sells concrete mix at a base price of $1.13 per pound. It's a constant it's a fixed price.
+					var CONCRETE_MIX_BASE_PRICE = 1.13;
+					
+					//reduction rate % It's a constant it's a fixed %.
+					var BIG_DISCOUNT = .09;
+					var MEDIUM_DISCOUNT = .05;
+					var SMALL_DISCOUNT = .04;
+					var XSMALL_DISCOUNT = .02;
+					
+					//Is a constant it goes with the above reduction rates.
+					var REDUCTION_RATE_PERCENT;
+					
+					//REGULAR VARIABLES		variables that will change depending on the amount of pounds chosen.					
+					var numPounds;
+					var totalCost;
+					var costAfterReduction;
+					var moneySaved;
+
+
+				//Input:
+					numPounds= prompt("How many pounds do you want to purchase?");
+
+
+				//Calculations:
+				
+					//Have to do if else before math so that the math knows how and what to calculate against number of pounds 
+					//and what discount you will receive.
+					//Start from big number then go down according to reduction percent it will not work if I go small to big
+
+					if (numPounds >= 15000)
+					{
+						REDUCTION_RATE_PERCENT = BIG_DISCOUNT;
+					}
+					else if (numPounds >=9001)
+					{
+						REDUCTION_RATE_PERCENT = MEDIUM_DISCOUNT;
+					}
+					else if (numPounds >=501)
+					{
+						REDUCTION_RATE_PERCENT = SMALL_DISCOUNT;
+					}
+					else if (numPounds <= 500)
+					{
+						REDUCTION_RATE_PERCENT =  XSMALL_DISCOUNT;
+					}
+					
+					//math to calculate reduction rate to find money saved, cost w/out saving, cost  with saving.
+					totalCost = CONCRETE_MIX_BASE_PRICE  * numPounds;
+					moneySaved = (numPounds * (REDUCTION_RATE_PERCENT * CONCRETE_MIX_BASE_PRICE));
+					costAfterReduction = totalCost - moneySaved;
+					
+
+					// if else for if the user inputs zero as pounds it will give them the error message below.
+					if (numPounds <=0)
+					{
+						//alert("Error! Try Again.");
+						//key word is (display) display is a document.write, error message
+						document.write("ERROR! You need to purchase more pounds. Try again.");
+					}
+					else 
+					{
+						//displayed in the order of what is on the midterm instructions toFixed(2) is for the 2decimal places because its money.
+						document.write("You bought:" + " " + numPounds + " " + "pounds.");
+						document.write("<br>Your discount percent was:" +" " + REDUCTION_RATE_PERCENT);
+						document.write("<br>The total cost with out the discount is:" +" " + "$" + totalCost.toFixed(2));
+						document.write("<br> The Price after the discount is:" + " " + "$" + costAfterReduction.toFixed(2));
+						document.write("<br> The money you have saved is:" + " " + "$" + moneySaved.toFixed(2));
+						
+					}
+				
+				
+			</script>
+		</body>
+</html>
